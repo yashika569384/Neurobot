@@ -21,6 +21,23 @@ from sklearn.preprocessing import LabelEncoder
 import streamlit as st
 import streamlit.components.v1 as components
 @st.cache_resource
+def get_base64_image(image_file):
+    with open(image_file, "rb") as img_file:
+        return base64.b64encode(img_file.read()).decode()
+
+# 🌄 Background Image
+img_base64 = get_base64_image("brain.jpg")
+st.markdown(f"""
+    <style>
+    .stApp {{
+        background-image: url("data:image/jpg;base64,{img_base64}");
+        background-size: cover;
+        background-position: center;     
+        background-repeat: no-repeat;
+        height: 100vh;
+    }}
+    </style>
+""", unsafe_allow_html=True)
 def load_pdf():
     docs = "treatments-autism_508.pdf"
     reader = PdfReader(docs)
@@ -380,6 +397,7 @@ with st.sidebar:
     # accuracy_score(y_test,y_pred)
     
     
+
 
 
 
