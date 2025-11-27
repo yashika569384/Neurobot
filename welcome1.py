@@ -302,8 +302,8 @@ with st.sidebar:
     st.title("🤖 NeuroBot")
 
     load_dotenv()
-    os.environ["GROQ_API_KEY"] = "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"
-
+    GROQ_KEY = os.getenv("GROQ_API_KEY")
+   
     # Load everything ONCE instead of every message
     pages = load_pdf()
     vector_store = load_vector_store(pages)
@@ -380,6 +380,7 @@ with st.sidebar:
     # accuracy_score(y_test,y_pred)
     
     
+
 
 
 
